@@ -1,11 +1,11 @@
 ---
-title: Acuti modo
+title: Find the Perfect Home
 description: Lorem Acuti modo tardantis unam mitissima dissimulator
   inposuit   corpus sintque tura tremenda, nec coetum.
-author: BuckyBuck
-date: 2023-06-08T15:26:46.705Z
-image: /src/assets/images/blog/blog-cover.jpg
-imageAlt: Kitchen
+author: Output
+date: 2024-12-07T22:25:00.000Z
+image: src/assets/images/blog/canada.jpg
+imageAlt: Canada
 tags:
   - post
 ---
