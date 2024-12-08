@@ -5,7 +5,7 @@ backend:
 local_backend: true
 media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
 public_folder: src/assets/images/blog  # Ensure that this path is the same as the media_folder path above.
-site_url: https://outputstarter.netlify.app/ # Displays a link to home page in the top-right corner of the CMS dashboard
+site_url: https://outputstarter.netlify.app # Displays a link to home page in the top-right corner of the CMS dashboard
 logo_url: https://derek-perry.com/media/logo.png # change url to a link to the image you want to use, no file paths, must be a URL
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
@@ -13,11 +13,11 @@ collections:
     folder: "src/content/blog" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields: # The fields for each document
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Title", name: "title", widget: "string", hint: "Keep titles brief yet descriptive." }
+      - { label: "Description", name: "description", widget: "string", hint: "Add a short description to display on the blog post card." }
       - { label: "Author", name: "author", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "image", widget: "image" }
-      - { label: "Image Caption", name: "imageAlt", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - { label: "Date", name: "date", widget: "datetime", hint: "Choose the date the post was/will be published." }
+      - { label: "Featured Image", name: "image", widget: "image", hint: "Add a featured image to display at the top of the post." }
+      - { label: "Featured Image Caption", name: "imageAlt", widget: "string", required: false, hint: "Add a caption to describe the featured image." }
+      - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add comma-separated tags to help categorize your post." }
       - { label: "Body", name: "body", widget: "markdown" }

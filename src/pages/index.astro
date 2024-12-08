@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
+import client from "@data/client.json";
 import CTA from "@components/CTA.astro";
 import FAQ from "@components/FAQ.astro";
 
@@ -10,8 +11,8 @@ const optimizedImage = await getOptimizedImage(landingImage)
 ---
 
 <BaseLayout
-  title="Pixel Perfect Websites"
-  description="Meta description for the page"
+  title="Output Starter Kit"
+  description={"Website Starter Kit from " + client.name}
   preloadedImage = {optimizedImage}
 >
   <!-- ============================================ -->

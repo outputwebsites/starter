@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
+import client from "@data/client.json";
 import CTA from "@components/CTA.astro";
 import Landing from "@components/Landing.astro";
 import FAQ from "@components/FAQ.astro";
@@ -12,7 +13,7 @@ const optimizedImage = await getOptimizedImage(landingImage)
 
 <BaseLayout
   title="About"
-  description="Meta description for the page"
+  description={"About " + client.name}
   preloadedImage = {optimizedImage}
 >
   <!-- ============================================ -->
