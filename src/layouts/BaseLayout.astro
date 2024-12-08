@@ -3,10 +3,12 @@ import { ViewTransitions } from "astro:transitions";
 import client from "@data/client.json";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import "@styles/root.less";
-import "@styles/dark.less";
+import "@fontsource-variable/outfit";
+import outfitWoff2 from "@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url";
 
-const { description, title, preloadedImage } = Astro.props;
+import "@styles/globals.css";
+
+const { description, title } = Astro.props;
 ---
 
 <!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
@@ -26,8 +28,14 @@ const { description, title, preloadedImage } = Astro.props;
       href={`https://${client.domain}${Astro.url.pathname}`}
     />
 
-    <!-- Preloads the image passed as a prop -->
-    <link rel="preload" href={preloadedImage.src} as="image" />
+    <!-- Preloads the font -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={outfitWoff2}
+      crossorigin="anonymous"
+    />
 
     <!--Social Media Display-->
     <meta property="og:title" content={title} />
@@ -113,11 +121,11 @@ const { description, title, preloadedImage } = Astro.props;
     // default to the light theme
     let theme = "light";
 
-    // check localStorage for a saved 'theme' variable. if it's there, the user has visited before, so apply the necessary theme choices
+    // check localStorage for a saved "theme" variable. if it is there, the user has visited before, so apply the necessary theme choices
     if (localStorage.getItem("theme")) {
       theme = localStorage.getItem("theme");
     }
-    // if it's not there, check to see if the user has applied dark mode preferences themselves in the browser
+    // if it"s not there, check to see if the user has applied dark mode preferences themselves in the browser
     else if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches

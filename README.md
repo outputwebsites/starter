@@ -5,15 +5,16 @@
 _(This repository contains the Website Starter Kit for Output Websites.)_
 _[Website, Web Design]_
 
-**Made Using:** [Astro v4](https://astro.build), [Astro Icon](https://astroicon.dev), [Autoprefixer](https://npmjs.com/package/autoprefixer), [Decap CMS](https://decapcms.org), [Netlify](https://netlify.com)
+**Made Using:** [Astro v4](https://astro.build), [Astro Icon](https://astroicon.dev), [Sitemap Astro Integration](https://docs.astro.build/en/guides/integrations-guide/sitemap), [Tailwind CSS Astro Integration](https://docs.astro.build/en/guides/integrations-guide/tailwind), [Autoprefixer](https://npmjs.com/package/autoprefixer), [Decap CMS](https://decapcms.org), [Netlify](https://netlify.com)
 
 ---
 
 ## Links
 
+* **Output Starter Kit Website:** [outputstart.netlify.app](https://outputstart.netlify.app "Visit the Output Starter Kit at outputstart.netlify.app")
+* **Output Starter Kit GitHub:** [github.com/outputwebsites/starter](https://github.com/outputwebsites/starter "Visit the GitHub for the Output Starter Kit at github.com/outputwebsites/starter")
 * **Output Websites Website:** [OutputWebsites.com](https://OutputWebsites.com "Visit the website for Output Websites at OutputWebsites.com")
 * **Website By:** [Derek Perry - derek-perry.com](https://derek-perry.com "Go to Derek Perry, the designer, developer, and owner of Output Websites, at derek-perry.com")
-* **Output Starter Kit GitHub:** [github.com/outputwebsites/starter](https://github.com/outputwebsites/starter "Visit the GitHub for the Output Starter Kit at github.com/outputwebsites/starter")
 
 ---
 
@@ -222,8 +223,8 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 > Note: we have customised this navigation wrapper to include better accessibility features, which you will not find in navigation stitches.
 
 ```JSX
-<div class="cs-ul-wrapper">
-  <ul id="cs-expanded-ul" class="cs-ul">
+<div>
+  <ul id="cs-expanded-ul">
     {navData.map((entry) => (
       <li
         class:list={[
@@ -239,12 +240,11 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
           aria-controls={`submenu-${entry.key}`}
           aria-label="dropdown-label"
             class:list={[
-              "cs-li-link cs-dropdown-button",
-              { "cs-active": Astro.url.pathname.includes(entry.url)},
+              { "nav-active": Astro.url.pathname.includes(entry.url)},
             ]}
           >
             {entry.key}
-            <Icon name="mdi--caret" class="cs-drop-icon" />
+            <Icon name="mdi--caret" />
           </button>
         ) : (
           // If entry does not have children in navData.json, create an anchor
@@ -262,12 +262,12 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
         
         {entry.children?.length > 0 && (
           // If entry has children in navData.json, create a drop down menu
-          <ul id={`submenu-${entry.key}`} class="cs-drop-ul">
+          <ul id={`submenu-${entry.key}`}>
             {entry.children.map((child) => (
-              <li class="cs-drop-li">
+              <li>
                 <a 
                   href={child.url} 
-                  class="cs-li-link cs-drop-link"
+                 
                   aria-current={Astro.url.pathname === child.url ? "page" : undefined}
                   aria-label={child.key}
                 >
@@ -286,7 +286,7 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
 > Should you wish to use your own method of rendering the navigation, you can still take advantage of applying the "active" class styles by using a smaller amount of code within the class attribute of the link:
 
 ```JSX
-<li class="cs-li">
+<li>
   <a href="/about" class:list={["cs-li-link, {"cs-active": "/about/" === Astro.url.pathname }]}>About</a>
 </li>
 ```
@@ -303,20 +303,20 @@ This will allow you to continue to reap the benefits of navigation vi navData.js
     { 'cs-active': '/odenton-custom-closets/' === Astro.url.pathname },
   ]}>
     Areas Served
-    <img class="cs-drop-icon" src="/assets/images/down.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
+    <img src="/assets/images/down.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
   </span>
-  <ul class="cs-drop-ul">
-    <li class="cs-drop-li">
-      <a href="/annapolis-custom-closets" class="cs-drop-link">Annapolis</a>
+  <ul>
+    <li>
+      <a href="/annapolis-custom-closets">Annapolis</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/bowie-custom-closets" class="cs-drop-link">Bowie</a>
+    <li>
+      <a href="/bowie-custom-closets">Bowie</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/severna-park-custom-closets" class="cs-drop-link">Severna Park</a>
+    <li>
+      <a href="/severna-park-custom-closets">Severna Park</a>
     </li>
-    <li class="cs-drop-li">
-      <a href="/odenton-custom-closets" class="cs-drop-link">Odenton</a>
+    <li>
+      <a href="/odenton-custom-closets">Odenton</a>
     </li>
   </ul>
 </li>
@@ -407,7 +407,7 @@ Content Collections can also be used on content that is not created via the CMS.
 
 ### Preloading images
 
-THis kit takes advantage of the [preload attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload) to fetch images above the fold with higher priority, resulting in improved performances and reducing flashes of unstyled content. Preloaded images are used on the index page for the hero image as well as on all other pages in the Landing component.
+This kit takes advantage of the [preload attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload) to fetch images above the fold with higher priority, resulting in improved performances and reducing flashes of unstyled content. Preloaded images are used on the index page for the hero image as well as on all other pages in the Landing component.
 
 You will notice this snippet at the top of every `.astro` page:
 

@@ -72,8 +72,9 @@
 <!-- As a consequence, there is no need to use the defer attribute when loading a module script because modules are deferred automatically. -->
 
 <script>
-// Astro:page-load wrapper for View Transitions purposes
-document.addEventListener('astro:page-load', () => { // Makes the script available after navigating to a new page.
+  // Astro:page-load wrapper for View Transitions purposes
+  document.addEventListener("astro:page-load", () => {
+    // Makes the script available after navigating to a new page.
     const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
     for (const item of faqItems) {
       const onClick = () => {

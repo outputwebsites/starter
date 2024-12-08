@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mx-0;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg sm:text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
+  }
+}
+
+/* For the base HTML and body tags: set padding/margin, font, etc */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Outfit Variable", sans-serif;
+  letter-spacing: 0.2px;
+  scroll-behavior: smooth;
+}
+
+/* Adjust scroll-padding-top to give padding before the #linked content */
+html {
+  scroll-padding-top: 2.5rem;
+  /* 40px */
+}
+
+/* Change selection background */
+::selection {
+  @apply bg-outputGreenMain text-outputWhite;
+  text-shadow: none;
+}
+
+/* Increase paragraph tag size default to tailwind-xl */
+p {
+  font-size: 1.25rem;
+  /* 20px - xl */
+  line-height: 1.75rem;
+  /* 28px - xl */
+}
+
+/* Link Tags */
+a {
+  @apply text-outputGreenDark;
+  text-decoration: underline;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 100ms;
+}
+
+a:hover {
+  @apply text-outputGreenMain;
+  text-decoration: none;
+}
+
+a:focus {
+  @apply text-outputGreenDarker;
+  text-decoration: underline;
+}
+
+a:active {
+  @apply text-outputGreenDarker;
+  text-decoration: underline;
+}
+
+/* Button - Standard Green */
+.button-gradient {
+  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDark;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 2.5rem;
+  /* 40px */
+  border-radius: 0.5rem;
+  /* 8px */
+  padding: 1rem 2rem 1rem 2rem;
+  /* 1rem=16px, 2rem=32px */
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 100ms;
+}
+
+.button-gradient:hover {
+  @apply text-outputBlack bg-gradient-to-bl from-outputGreenLight to-outputGreenMain;
+  text-decoration: none;
+}
+
+.button-gradient:focus {
+  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDarker;
+  text-decoration: none;
+}
+
+.button-gradient:active {
+  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDarker;
+  text-decoration: none;
+}
+
+/* HR/Dividing Lines */
+hr {
+  margin-top: 0.5rem;
+  /* 8px */
+  margin-bottom: 0.5rem;
+  /* 8px */
+}
+
+/* Lists */
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  counter-reset: item;
+}
+
+ul ul,
+ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 1rem;
+  /* 16px */
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-left: 1rem;
+  /* 16px */
+}
+
+li>p,
+li>h1,
+li>h2,
+li>h3,
+li>h4,
+li>h5,
+li>h6 {
+  display: inline-block;
+}
+
+ol>li {
+  counter-increment: item;
+}
+
+ol ol>li {
+  display: block;
+}
+
+ol ol>li:before {
+  content: counters(item, ".") " ";
+}
+
+dfn>abbr[title]::after {
+  content: " (" attr(title) ")";
+}
