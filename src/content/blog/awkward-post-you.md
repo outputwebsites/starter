@@ -1,26 +1,29 @@
 ---
-title: Find the Perfect Home
-description: Lorem Acuti modo tardantis unam mitissima dissimulator
-  inposuit   corpus sintque tura tremenda, nec coetum.
-author: Output
-date: 2024-12-07T22:25:00.000Z
-image: src/assets/images/blog/canada.jpg
+title: Awkward Post??!? @you
+author:
+  - Kered Yrrep__The outer ideologies of my body are clear as
+    day.--src/assets/images/media/blog-cover.jpg
+  - Derek Perry__The inner machinations of my mind are an
+    enigma.--src/assets/images/media/derek-perry.png
+description: ""
+image: src/assets/images/media/blog-cover.jpg
 imageAlt: Canada
+date: 2024-12-09T00:20:00.000Z
 tags:
+  - featured
   - post
 ---
-
-## Lacerans aliter tetigit praeterea rite
+## Lacerans [aliter](https://example.com) tetigit `praeterea` rite
 
 Lorem markdownum tardantis unam mitissima dissimulator inposuit corpus sintque tura tremenda, nec coetum. Est limen Isthmo sagittas patres emerguntque anxia
 [defenderet](http://www.morte.com/parvo.html) illi, est.
 
-- Sua ille submittere viribus verba visa Myconon
-- Qvem nec
-- Frena prior rauco iaculum enim
-- Modo referat
-- Tibi mihi sumit bibit censuque licentia consistite
-- Sumptis Iunonis muneris quiete haec tori
+* Sua ille submittere viribus verba visa Myconon
+* Qvem nec
+* Frena prior rauco iaculum enim
+* Modo referat
+* Tibi mihi sumit bibit censuque licentia consistite
+* Sumptis Iunonis muneris quiete haec tori
 
 ## Aut pedum tendit ut raptae
 
@@ -32,7 +35,7 @@ saepe admisitque tamen iuvenum, vivere Lemnicolae est vidi dilapsa ianua gelidum
 ## Iacentes temptabat
 
 Novissima adfixa declinat Labros et librat herbida se sacro amplectitur moenia: parcite nam quoque pugnat non quam tot. Sole et enim inundet? Ecce urbesque
-_obliquis_, non patietur fuga fixa feros horruit [ferox tui](http://www.postquam.org/gravatumiphis.html), de.
+*obliquis*, non patietur fuga fixa feros horruit [ferox tui](http://www.postquam.org/gravatumiphis.html), de.
 
 1. Argentea ait exstabant trames
 2. Nocti liquidum Minervae Cerberus quas
@@ -41,13 +44,13 @@ _obliquis_, non patietur fuga fixa feros horruit [ferox tui](http://www.postquam
 ## Respondere prior si ingemit bellare
 
 Cadme tetigit in luctus minor mulcebunt tempora, utque sua semper essem cultrosque **enses** praecipitem hunc **vestris**. Restantem iussit poena; quod vendit
-electarumque mendacem nec sedens quidem Iovi torta cruribus, et? Venit alvum _anima_! Manibusque idem _Aconteus ducat_ multamque et tibi Siphnon; mitissima
+electarumque mendacem nec sedens quidem Iovi torta cruribus, et? Venit alvum *anima*! Manibusque idem *Aconteus ducat* multamque et tibi Siphnon; mitissima
 devenit aut poscitur flumina nymphas revocare obstitit Lyciaeque Meleagros fors.
 
 Orbem dolendi corpore hic [flamma vertere recurvas](http://paruit.com/sineloqui.html), da pedes calido unus armis relinquunt,
 [flores Minervae formam](http://alumnaesibi.com/unda). Caelo [inposuit](http://invirginibus.org/trahuntur) viribus semper, vesci excipit facta putes. Patitur
 attonitos acutior dum liquefacta nostra habebat. Duabus victus me suae viscera natorum ferox contulerat, de tuus Pasiphaeia ruunt protinus?
 
-_Multis soror_, mundi paruerit quietem in, temeraria velantque guttura temerarius candens prostravit vera operatus, ut fecimus. Gyaros quaesiti in, a frustra,
+*Multis soror*, mundi paruerit quietem in, temeraria velantque guttura temerarius candens prostravit vera operatus, ut fecimus. Gyaros quaesiti in, a frustra,
 iacentia hosti. Suae iamque. Sustinet crimen toris, oves hanc est causa tum paravi phocen in natas, crudelis infra erat minimo? Inquit et **loqui studiisque
 Alpheos** venti spectata velocior [fida](http://www.animiquetantaque.net/atulterius.aspx) Iove habet Cometen rediit; tulisset!

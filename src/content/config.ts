@@ -9,8 +9,7 @@ const blogsCollection = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
-			description: z.string(),
-			author: z.string(),
+			author: z.array(z.string()),
 			date: z.date(),
 			tags: z.array(z.string()),
 			image: image(),
@@ -18,6 +17,17 @@ const blogsCollection = defineCollection({
 		}),
 });
 
+const authorsCollection = defineCollection({
+	type: "content",
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			bio: z.string(),
+			image: image(),
+		}),
+});
+
 export const collections = {
 	blog: blogsCollection,
+	author: authorsCollection,
 };

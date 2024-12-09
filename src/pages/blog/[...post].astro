@@ -17,7 +17,16 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.body
+    .split(" ")
+    .slice(0, 20)
+    .join(" ")
+    .replace(/[#*_\`]/g, "")
+    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
+    .trim() + (post.body.split(" ").length > 20 && "...")}
+>
   <!-- ============================================ -->
   <!--              Main Blog Content               -->
   <!-- ============================================ -->
@@ -31,34 +40,52 @@ const { Content } = await post.render();
 
       <article class="blog-article">
         <!--Main Article Image-->
-        <picture class="blog-mainImage">
-          <Image
-            src={post.data.image}
-            alt={post.data.imageAlt ? post.data.imageAlt : post.data.title}
-            width="795"
-            height="400"
-            decoding="async"
-          />
-        </picture>
+        {
+          post.data.image && (
+            <picture class="blog-mainImage">
+              <Image
+                src={post.data.image}
+                alt={post.data.imageAlt ? post.data.imageAlt : post.data.title}
+                width="795"
+                height="400"
+                decoding="async"
+              />
+            </picture>
+          )
+        }
 
         <!--Article Info-->
         <div class="article-group">
           <h1 class="blog-h1">{post.data.title}</h1>
           <div class="blog-authorGroup">
-            <!--Author Image-->
-            <picture class="blog-author-img">
-              <img
-                src="/assets/svgs/profile.svg"
-                alt="house"
-                width="32"
-                height="32"
-                decoding="async"
-              />
-            </picture>
-            <span class="blog-author">{post.data.author}</span>
+            {
+              post.data.author.map((author) => {
+                const [authorName, , authorImage] = author.split(/__|--/);
+                return (
+                  <div>
+                    <picture class="blog-author-img">
+                      <img
+                        src={
+                          authorImage !== ""
+                            ? "/" + authorImage
+                            : "/assets/svgs/profile.svg"
+                        }
+                        alt={authorName}
+                        width="32"
+                        height="32"
+                        decoding="async"
+                      />
+                    </picture>
+                    <span class="blog-author">{authorName}</span>
+                  </div>
+                );
+              })
+            }
             <span aria-hidden="true" class="blog-dot"></span>
             <!--Blog Date-->
-            <span class="blog-date">{formatDate(post.data.date)}</span>
+            <span class="blog-date"
+              >{post.data.date && formatDate(post.data.date)}</span
+            >
           </div>
         </div>
         <section id="blog-content">

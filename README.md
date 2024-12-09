@@ -90,7 +90,7 @@ Astro processes, optimizes, and bundles your src/ files to create the final webs
 
 Contains all assets you want optimized by Astro (such as assets used in `<Picture />` components for example) must be placed in `src` .
 
-`public/assets/images/blog` is where the images uploaded on the CMS will be stored.
+`public/assets/images/media` is where the images uploaded on the CMS will be stored.
 
 ###### `src/components`
 
@@ -385,7 +385,7 @@ the [Decap CMS documentation](https://decapcms.org/docs/add-to-your-site/#config
 
 Blog content lives in `/src/content/blog` in the form of markdown files, with a front matter similar to that of the pages. MDX files can also be used if you want to include JSX components. The title, description, and tags are defined in the frontmatter of the markdown. The permalink will be the same as the file name.
 
-Files uploaded through the dashboard's media library will be stored in `src/assets/images/blog` so that they can be accessed and optimised by Astro components if you wish.
+Files uploaded through the dashboard's media library will be stored in `src/assets/images/media` so that they can be accessed and optimised by Astro components if you wish.
 
 When `npm run dev` is run, a proxy server for the CMS is spun up on `localhost:8081` . That can often mean you run into errors if `localhost:8080` is already taken, so look out for that. You can locally access the blog via navigating to the `/admin` path (e.g. `http://localhost:4321/admin` ). While running the local dev server, you won't need to login to access the admin dashboard. All blog content can be easily created, updated and deleted via this admin panel, and is the very system that your clients can use to manage their website without your involvement. 
 

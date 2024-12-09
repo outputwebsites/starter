@@ -1,23 +1,41 @@
 # See full Decap documentation for further configuration: https://decapcms.org/docs/intro/
 backend:
   name: git-gateway
-  branch: main # Branch to update
+  repo: outputwebsites/starter # Path to the relevant GitHub repository: owner-name/repo-name
+  branch: main # Branch to update, defaults to master
 local_backend: true
-media_folder: src/assets/images/blog # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
-public_folder: src/assets/images/blog  # Ensure that this path is the same as the media_folder path above.
-site_url: https://outputstarter.netlify.app # Displays a link to home page in the top-right corner of the CMS dashboard
+editor:
+  preview: false
+media_folder: src/assets/images/media # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
+public_folder: src/assets/images/media # Ensure that this path is the same as the media_folder path above.
 logo_url: https://derek-perry.com/media/logo.png # change url to a link to the image you want to use, no file paths, must be a URL
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
-    label: "Blog" # Used in the admin dashboard UI
-    folder: "src/content/blog" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields for each document
-      - { label: "Title", name: "title", widget: "string", hint: "Keep titles brief yet descriptive." }
-      - { label: "Description", name: "description", widget: "string", hint: "Add a short description to display on the blog post card." }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", hint: "Choose the date the post was/will be published." }
-      - { label: "Featured Image", name: "image", widget: "image", hint: "Add a featured image to display at the top of the post." }
-      - { label: "Featured Image Caption", name: "imageAlt", widget: "string", required: false, hint: "Add a caption to describe the featured image." }
-      - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add comma-separated tags to help categorize your post." }
-      - { label: "Body", name: "body", widget: "markdown" }
+# Define the collections that will be available in the CMS. Collections Docs = https://decapcms.org/docs/collection-folder  |  Widgets Docs = https://decapcms.org/docs/widgets
+- name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
+  label: "Blog Posts" # Used in the admin dashboard UI
+  label_singular: 'Blog Post' # Used in the admin dashboard UI
+  description: "Blog posts show up on the blog page and help SEO." # Used in the admin dashboard UI
+  identifier_field: title # The field that will be used to identify the document in the CMS
+  folder: "src/content/blog" # The path to the folder where the documents are stored
+  create: true # Allow users to create new documents in this collection
+  fields:
+  # The fields for each document
+  - { label: "Title", name: "title", widget: "string", hint: "Keep titles brief yet descriptive." }
+  - { label: "Author", name: 'author', widget: relation, required: false, collection: author, multiple: true, search_fields: [ "name" ], display_fields: [ "name" ], value_field: "{{name}}__{{bio}}--{{image}}", hint: "Select the author(s) of the blog post." }
+  - { label: "Body", name: "body", widget: "markdown", hint: "Write your blog post content in the box above." }
+  - { label: "Featured Image", name: "image", widget: "image", hint: "Add a photo to display at the top of the post." }
+  - { label: "Featured Image Caption", name: "imageAlt", widget: "string", required: false, hint: "Add a caption to describe the featured image." }
+  - { label: "Publish Date", name: "date", widget: "datetime", default: '{{now}}', hint: "Choose the date and time the post was published or written." }
+  - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add comma-separated tags to help categorize your post. (Don't press space!)" }
+- name: "author" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
+  label: "Authors" # Used in the admin dashboard UI
+  label_singular: 'Author' # Used in the admin dashboard UI
+  description: "Authors are used to properly attribute blog posts." # Used in the admin dashboard UI
+  identifier_field: name # The field that will be used to identify the document in the CMS
+  folder: "src/content/author" # The path to the folder where the documents are stored
+  create: true # Allow users to create new documents in this collection
+  fields:
+  # The fields for each document
+  - { label: "Name", name: "name", widget: "string", hint: "Enter your full name." }
+  - { label: "Short Bio", name: "bio", widget: "string", required: false, hint: "Add a short biography to display under your author credits." }
+  - { label: "Portrait Image", name: "image", widget: "image", hint: "Add a square portrait image featuring a color head shot." }

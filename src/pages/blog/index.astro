@@ -30,33 +30,56 @@ posts.sort(
         posts.length >= 1 &&
           posts.map((post) => (
             <article class="recent-articles">
-              <picture class="blog-mainImage">
-                <Image
-                  src={post.data.image}
-                  alt={post.data.imageAlt}
-                  width="795"
-                  height="400"
-                  decoding="async"
-                />
-              </picture>
+              {post.data.image && (
+                <picture class="blog-mainImage">
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.imageAlt ? post.data.imageAlt : post.data.title}
+                    width="795"
+                    height="400"
+                    decoding="async"
+                  />
+                </picture>
+              )}
 
               <div class="article-group">
                 <div class="blog-authorGroup">
-                  <picture class="blog-author-img">
-                    <img
-                      src="/assets/svgs/profile.svg"
-                      alt="house"
-                      width="32"
-                      height="32"
-                      decoding="async"
-                    />
-                  </picture>
-                  <span class="blog-author">{post.data.author}</span>
+                  {post.data.author.map((author) => {
+                    const [authorName, , authorImage] = author.split(/__|--/);
+                    return (
+                      <div>
+                        <picture class="blog-author-img">
+                          <img
+                            src={
+                              authorImage !== ""
+                                ? "/" + authorImage
+                                : "/assets/svgs/profile.svg"
+                            }
+                            alt={authorName}
+                            width="32"
+                            height="32"
+                            decoding="async"
+                          />
+                        </picture>
+                        <span class="blog-author">{authorName}</span>
+                      </div>
+                    );
+                  })}
                   <span aria-hidden="true" class="blog-dot" />
-                  <span class="blog-date">{formatDate(post.data.date)}</span>
+                  <span class="blog-date">
+                    {post.data.date && formatDate(post.data.date)}
+                  </span>
                 </div>
                 <h2 class="blog-h1">{post.data.title}</h2>
-                <p class="blog-desc">{post.data.description}</p>
+                <p class="blog-desc">
+                  {post.body
+                    .split(" ")
+                    .slice(0, 20)
+                    .join(" ")
+                    .replace(/[#*_\`]/g, "")
+                    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
+                    .trim() + (post.body.split(" ").length > 20 && "...")}
+                </p>
                 <a href={post.slug} class="blog-link">
                   Continue Reading
                 </a>
