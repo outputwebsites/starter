@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import client from "@data/client.json";
+import { Image } from "astro:assets";
 import CTA from "@components/CTA.astro";
 import { getCollection } from "astro:content";
 import { formatDate } from "@js/utils";
@@ -30,13 +31,13 @@ posts.sort(
             <article class="recent-articles">
               {post.data.image && (
                 <picture class="blog-mainImage">
-                  <img
-                    src={post.data.image.src}
+                  <Image
+                    src={post.data.image}
                     alt={
                       post.data.imageAlt ? post.data.imageAlt : post.data.title
                     }
-                    width="795"
-                    height="400"
+                    width={post.data.image.width}
+                    height={post.data.image.height}
                     decoding="async"
                   />
                 </picture>
@@ -52,7 +53,7 @@ posts.sort(
                           <img
                             src={
                               authorImage !== ""
-                                ? "/" + authorImage
+                                ? "../" + authorImage
                                 : "/assets/svgs/profile.svg"
                             }
                             alt={authorName}
