@@ -68,7 +68,7 @@ const authors = await getEntries(post.data.author);
                     <Image
                       src={
                         author.data.photo
-                          ? import.meta.env.BASE_URL + author.data.photo.src.replace(/^.*src\/assets\//, "src/assets/")
+                          ? author.data.photo.src.replace(/^.*src\/assets\//, "src/assets/")
                           : "/assets/svgs/profile.svg"
                       }
                       alt={author.data.name}
