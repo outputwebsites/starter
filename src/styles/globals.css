@@ -189,3 +189,13 @@ ol ol>li:before {
 dfn>abbr[title]::after {
   content: " (" attr(title) ")";
 }
+
+@media only screen and (min-width: 0em) {
+  .skip {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1111111;
+  }
+}

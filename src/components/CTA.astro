@@ -1,14 +1,6 @@
----
-// Import the component and all the images you want to use with it
-import CSPicture from "@components/TemplateComponents/CSPicture.astro";
-import mobileImage from "@assets/images/CTA/construction-m.jpg";
-import desktopImage from "@assets/images/CTA/cabinets2.jpg";
-import fallbackImage from "@assets/images/CTA/cabinets2.jpg";
----
-
 <section id="cta">
-  <div class="container">
-    <h2 class="title">
+  <div class="flex flex-col">
+    <h2 id="Get It Done">
       Get It Done
       <br />
       With Us Today
@@ -17,30 +9,6 @@ import fallbackImage from "@assets/images/CTA/cabinets2.jpg";
       Say something catchy, informative, and encouraging to click the button to
       go to the contact page. I like to add these to the bottom of all pages.
     </p>
-    <a href="/contact" class="button">Get an Estimate Now</a>
+    <a href="/contact" class="button-gradient">Get an Estimate Now</a>
   </div>
-  <CSPicture
-    mobileImgUrl={mobileImage}
-    mobileMediaWidth="600px"
-    desktopImgUrl={desktopImage}
-    desktopMediaWidth="601px"
-    fallbackImgUrl={fallbackImage}
-    alt=""
-  />
-  <!-- <picture>
-    <source
-      media="(max-width: 600px)"
-      srcset="/assets/images/cabinets2-m.jpg"
-    />
-    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg" />
-    <img
-      aria-hidden="true"
-      decoding="async"
-      src="/assets/images/cabinets2.jpg"
-      alt="kitchen cabinets"
-      loading="lazy"
-      width="2500"
-      height="1667"
-    />
-  </picture> -->
 </section>

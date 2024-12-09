@@ -29,69 +29,57 @@ const authors = await getEntries(post.data.author);
     .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
     .trim() + (post.body.split(" ").length > 20 && "...")}
 >
-  <!-- ============================================ -->
-  <!--              Main Blog Content               -->
-  <!-- ============================================ -->
+  <article id="blog-post">
+    {
+      post.data.image && (
+        <picture>
+          <Image
+            src={post.data.image}
+            alt={post.data.imageAlt ? post.data.imageAlt : post.data.title}
+            width={post.data.image.width}
+            height={post.data.image.height}
+            decoding="async"
+          />
+        </picture>
+      )
+    }
 
-  <div class="blog-container main-content-wrapper">
-    <!--Main content -->
-    <div class="main-content">
-      <!-- ============================================ -->
-      <!--                  Blog Article                -->
-      <!-- ============================================ -->
-
-      <article class="blog-article">
-        <!--Main Article Image-->
+    <div id="blog-post-details">
+      <h1 id={post.data.title}>{post.data.title}</h1>
+      <div>
         {
-          post.data.image && (
-            <picture class="blog-mainImage">
-              <Image
-                src={post.data.image}
-                alt={post.data.imageAlt ? post.data.imageAlt : post.data.title}
-                width={post.data.image.width}
-                height={post.data.image.height}
-                decoding="async"
-              />
-            </picture>
+          authors.map((author) => (
+            <div>
+                <picture>
+                  <Image
+                    src={
+                      typeof author.data.photo === "object" && author.data.photo !== null
+                        ? author.data.photo.src.replace(
+                            /^.*\/src\/assets\//,
+                            "/src/assets/",
+                          )
+                        : "/assets/svgs/profile.svg"
+                    }
+                    alt={author.data.name}
+                    width="32"
+                    height="32"
+                    decoding="async"
+                  />
+                </picture>
+              <p>{author.data.name}</p>
+            </div>
+          ))
+        }
+        {
+          post.data.date && (
+            <p>{formatDate(post.data.date)}</p>
           )
         }
-
-        <!--Article Info-->
-        <div class="article-group">
-          <h1 class="blog-h1">{post.data.title}</h1>
-          <div class="blog-authorGroup">
-            {
-              authors.map((author) => (
-                <div>
-                  <picture class="blog-author-img">
-                    <Image
-                      src={
-                        author.data.photo
-                          ? author.data.photo.src.replace(/^.*\/src\/assets\//, "/src/assets/")
-                          : "/assets/svgs/profile.svg"
-                      }
-                      alt={author.data.name}
-                      width="32"
-                      height="32"
-                      decoding="async"
-                    />
-                  </picture>
-                  <span class="blog-author">{author.data.name}</span>
-                </div>
-              ))
-            }
-            <span aria-hidden="true" class="blog-dot"></span>
-            <!--Blog Date-->
-            <span class="blog-date"
-              >{post.data.date && formatDate(post.data.date)}</span
-            >
-          </div>
-        </div>
-        <section id="blog-content">
-          <Content />
-        </section>
-      </article>
+      </div>
     </div>
-    <FeaturedPost />
-  </div>
+    <section id="blog-post-content">
+      <Content />
+    </section>
+  </article>
 </BaseLayout>
+<FeaturedPost />

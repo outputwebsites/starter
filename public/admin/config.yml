@@ -38,4 +38,4 @@ collections:
   # The fields for each document
   - { label: "Name", name: "name", widget: "string", hint: "Enter your full name." }
   - { label: "Short Bio", name: "bio", widget: "string", required: false, hint: "Add a short biography to display under your author credits." }
-  - { label: "Portrait Image", name: "photo", widget: "image", hint: "Add a square portrait image featuring a color head shot." }
+  - { label: "Portrait Image", name: "photo", widget: "image", required: false, hint: "Add a square portrait image featuring a color head shot." }

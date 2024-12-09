@@ -1,14 +1,14 @@
 ---
 import navData from "@data/navData.json";
 import { Icon } from "astro-icon/components";
+import ToggleMenu from "@components/ToggleMenu.astro";
 import DarkModeToggle from "@components/DarkModeToggle.astro";
 ---
 
-<!-- ============================================ --><!--                 Navigation                   --><!-- ============================================ -->
-<header id="cs-navigation">
-  <div class="cs-container">
+<header id="site-header">
+  <div class="flex gap-10 justify-center text-center items-center">
     <!--Nav Logo-->
-    <a href="/" class="cs-logo" aria-label="back to home">
+    <a href="/" aria-label="back to home" class="max-md:hidden">
       <img
         src="/assets/svgs/logo-black.svg"
         alt=""
@@ -19,24 +19,11 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
       />
     </a>
     <!--Navigation List-->
-    <nav class="cs-nav" role="navigation">
+    <nav class="flex" role="navigation">
       <!--Mobile Nav Toggle-->
-      <button
-        class="cs-toggle"
-        id="mobile-menu-toggle"
-        aria-expanded="false"
-        aria-controls="cs-expanded-ul"
-        aria-label="Toggle mobile menu."
-      >
-        <div class="cs-box" aria-hidden="true">
-          <span class="cs-line cs-line1" aria-hidden="true"></span>
-          <span class="cs-line cs-line2" aria-hidden="true"></span>
-          <span class="cs-line cs-line3" aria-hidden="true"></span>
-        </div>
-      </button>
-      <!-- If you want to use another navigation stitch and enjoy the benefits of dynamic routing, replace the .cs-ul-wrapper in the navigation stitch with this one below -->
-      <div class="cs-ul-wrapper">
-        <ul id="cs-expanded-ul" class="cs-ul">
+      <ToggleMenu />
+      <div class="flex">
+        <ul id="expanded-ul" class="flex gap-3 list-none">
           {
             navData.map((entry) => (
               <li
@@ -51,20 +38,20 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
                     aria-expanded="false"
                     aria-controls={`submenu-${entry.key}`}
                     class:list={[
-                      "cs-li-link cs-dropdown-button",
-                      { "cs-active": Astro.url.pathname.includes(entry.url) },
+                      "underline",
+                      { "no-underline font-bold": Astro.url.pathname.includes(entry.url) },
                     ]}
                   >
                     {entry.key}
-                    <Icon name="mdi--caret" class="cs-drop-icon" />
+                    <Icon name="mdi--caret" />
                   </button>
                 ) : (
                   // If entry does not have children in navData.json, create an anchor
                   <a
                     href={entry.url}
                     class:list={[
-                      "cs-li-link",
-                      { "cs-active": Astro.url.pathname === entry.url },
+                      "underline",
+                      { "no-underline font-bold": Astro.url.pathname === entry.url },
                     ]}
                     aria-current={
                       Astro.url.pathname === entry.url ? "page" : undefined
@@ -76,12 +63,11 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
 
                 {entry.children?.length > 0 && (
                   // If entry has children in navData.json, create a drop down menu
-                  <ul id={`submenu-${entry.key}`} class="cs-drop-ul">
-                    {entry.children.map((child) => (
-                      <li class="cs-drop-li">
+                  <ul id={`submenu-${entry.key}`}>
+                    {entry.children.map((child: { url: string; key: string }) => (
+                      <li>
                         <a
                           href={child.url}
-                          class="cs-li-link cs-drop-link"
                           aria-current={
                             Astro.url.pathname === child.url
                               ? "page"
@@ -100,7 +86,7 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
         </ul>
       </div>
     </nav>
-    <a href="/contact" class="cs-button-solid cs-nav-button">Contact Us</a>
+    <a href="/contact" class="button-gradient max-sm:hidden">Contact Us</a>
     <!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
     <DarkModeToggle />
   </div>

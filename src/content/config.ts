@@ -1,7 +1,7 @@
 import { z, defineCollection, reference } from "astro:content";
 
 // Every collection must reflect Decap's config.yml collection schema
-// In order to be able to optimize images with Astro built-in compoments, like <Image />, we first must use this image helper 
+// In order to be able to optimize images with Astro built-in components, like <Image />, we first must use this image helper 
 // Doc: https://docs.astro.build/en/guides/images/#images-in-content-collections
 
 const blogsCollection = defineCollection({
@@ -23,7 +23,7 @@ const authorsCollection = defineCollection({
 		z.object({
 			name: z.string(),
 			bio: z.string(),
-			photo: image(),
+			photo: image().or(z.string()),
 		}),
 });
 

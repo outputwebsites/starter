@@ -13,23 +13,15 @@ posts.sort(
 ---
 
 <BaseLayout title="Blog" description={"Blog Posts from " + client.name}>
-  <!-- ============================================ -->
-  <!--              Main Blog Content               -->
-  <!-- ============================================ -->
-
-  <div class="blog-container main-content-wrapper">
-    <!--Main content -->
-    <div class="main-content">
-      <!-- ============================================ -->
-      <!--                 Blog Articles                -->
-      <!-- ============================================ -->
+  <div id="blog-page">
+    <div id="blog-posts">
       {posts.length === 0 && <h1>No Recent Posts</h1>}
       {
         posts.length >= 1 &&
           posts.map((post) => (
-            <article class="recent-articles">
+            <article id={post.slug}>
               {post.data.image && (
-                <picture class="blog-mainImage">
+                <picture>
                   <Image
                     src={post.data.image}
                     alt={
@@ -41,22 +33,17 @@ posts.sort(
                   />
                 </picture>
               )}
-
-              <div class="article-group">
-                <h2 class="blog-h1">{post.data.title}</h2>
-                <p class="blog-desc">
-                  {post.body
-                    .split(" ")
-                    .slice(0, 20)
-                    .join(" ")
-                    .replace(/[#*_\`]/g, "")
-                    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
-                    .trim() + (post.body.split(" ").length > 20 && "...")}
-                </p>
-                <a href={post.slug} class="blog-link">
-                  Continue Reading
-                </a>
-              </div>
+              <h2 id={post.data.title}>{post.data.title}</h2>
+              <p>
+                {post.body
+                  .split(" ")
+                  .slice(0, 20)
+                  .join(" ")
+                  .replace(/[#*_\`]/g, "")
+                  .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
+                  .trim() + (post.body.split(" ").length > 20 && "...")}
+              </p>
+              <a href={post.slug}>Continue Reading</a>
             </article>
           ))
       }
