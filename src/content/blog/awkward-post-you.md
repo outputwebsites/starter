@@ -1,10 +1,8 @@
 ---
 title: Awkward Post??!? @you
 author:
-  - Kered Yrrep__The outer ideologies of my body are clear as
-    day.--src/assets/images/media/blog-cover.jpg
-  - Derek Perry__The inner machinations of my mind are an
-    enigma.--src/assets/images/media/derek-perry.png
+  - kered-yrrep
+  - derek-perry
 description: ""
 image: src/assets/images/media/blog-cover.jpg
 imageAlt: Canada
@@ -30,7 +28,7 @@ Lorem markdownum tardantis unam mitissima dissimulator inposuit corpus sintque t
 Est vicinia, est herba ut et [duro](http://pars.net/iamcum), agnosse dicitur spectator gracili aquarum. **Amore adfer metam** queri quartus cunctas ego.
 
 Tectis Iovemque moriens fraternaeque Gorgonei equosque Oceanumque, huius corporis, contigerant metu vecta patietur versasse. Et undis superbus? Cura cortice
-saepe admisitque tamen iuvenum, vivere Lemnicolae est vidi dilapsa ianua gelidum, Ismenus. Est dic lacertos regnum quippe certo, ut vultus tollere.
+saepe admisitque tamen iuvenum, vivere Lemnicolae est vidi dilapsa ianua gelidum, Ismenus. Est dic lacertos regnum quippe certo, ut vultus tollere..
 
 ## Iacentes temptabat
 

@@ -21,7 +21,7 @@ collections:
   fields:
   # The fields for each document
   - { label: "Title", name: "title", widget: "string", hint: "Keep titles brief yet descriptive." }
-  - { label: "Author", name: 'author', widget: relation, required: false, collection: author, multiple: true, search_fields: [ "name" ], display_fields: [ "name" ], value_field: "{{name}}__{{bio}}--{{image}}", hint: "Select the author(s) of the blog post." }
+  - { label: "Author", name: 'author', widget: relation, required: false, collection: author, multiple: true, search_fields: [ "name" ], display_fields: [ "name" ], value_field: "{{slug}}", hint: "Select the author(s) of the blog post." }
   - { label: "Body", name: "body", widget: "markdown", hint: "Write your blog post content in the box above." }
   - { label: "Featured Image", name: "image", widget: "image", hint: "Add a photo to display at the top of the post." }
   - { label: "Featured Image Caption", name: "imageAlt", widget: "string", required: false, hint: "Add a caption to describe the featured image." }
@@ -38,4 +38,4 @@ collections:
   # The fields for each document
   - { label: "Name", name: "name", widget: "string", hint: "Enter your full name." }
   - { label: "Short Bio", name: "bio", widget: "string", required: false, hint: "Add a short biography to display under your author credits." }
-  - { label: "Portrait Image", name: "image", widget: "image", hint: "Add a square portrait image featuring a color head shot." }
+  - { label: "Portrait Image", name: "photo", widget: "image", hint: "Add a square portrait image featuring a color head shot." }
