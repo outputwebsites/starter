@@ -1,32 +1,37 @@
-<!-- This page is the entry point to the the Decap CMS admin dashboard.--><!-- It should not be modified. --><!doctype html>
+---
+import { getCollection } from "astro:content";
+
+const details = await getCollection("details");
+---
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
-    <title>Output Admin Dashboard</title>
+    <title>
+      {details[0].data.domain} Dashboard
+    </title>
+
     <!--Favicons-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicons/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="/assets/favicons/apple-touch-icon.png"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicons/favicon-32x32.png?v1"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#da532c" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
+
     <!-- Netlify Identity widget -->
     <script
       is:inline

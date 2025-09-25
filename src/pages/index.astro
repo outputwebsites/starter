@@ -1,174 +1,59 @@
 ---
 import BaseLayout from "src/layouts/BaseLayout.astro";
-import client from "@data/client.json";
-import CTA from "@components/CTA.astro";
-import FAQ from "@components/FAQ.astro";
+import { getCollection } from "astro:content";
+
+const details = await getCollection("details");
 ---
 
 <BaseLayout
-  title="Output Starter Kit"
-  description={"Website Starter Kit from " + client.name}
+  title={details[0].data.name}
+  description={details[0].data.description}
 >
-  <section id="hero">
-    <div class="flex flex-col gap-4 px-3 py-10 text-center">
-      <h1 id="Output Starter Kit">Output Starter Kit</h1>
-      <p>
-        Output Starter Kit for use by Output Websites which builds fully-custom
-        websites tailored to the unique needs of small and local businesses.
-      </p>
-      <p>
-        Made Using: [Astro v4](https://astro.build), [Astro
-        Icon](https://astroicon.dev), [Sitemap Astro
-        Integration](https://docs.astro.build/en/guides/integrations-guide/sitemap),
-        [Tailwind CSS Astro
-        Integration](https://docs.astro.build/en/guides/integrations-guide/tailwind),
-        [Autoprefixer](https://npmjs.com/package/autoprefixer), [Decap
-        CMS](https://decapcms.org), [Netlify](https://netlify.com)
-      </p>
-      <a href="/about" class="button">Explore More</a>
+  <section id="welcome" class="flex flex-col gap-4 mt-32 px-3 text-center">
+    <h1 class="font-extralight max-[380px]:text-3xl" id={details[0].data.name}>
+      Welcome to <br /><span class="font-bold">{details[0].data.name}</span>
+    </h1>
+    <div
+      class="flex flex-col justify-center items-center gap-8 mx-auto my-8 text-center"
+    >
+      <h2
+        class="max-[394px]:max-w-[190px] font-extralight max-[578px]:text-xl max-[710px]:text-2xl text-3xl italic"
+      >
+        Your new website awaits you...
+      </h2>
     </div>
+  </section>
 
-    <section id="services" class="flex flex-wrap">
-      <div class="bg-stone-200 card">
-        <picture>
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/svgs/service1.svg"
-            alt="appliance"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h2>Service 1</h2>
-        <p>
-          Talk about the service with keywords people will be searching for it
-          by. Keep it 1-2 sentences.
-        </p>
-      </div>
-      <div class="bg-stone-200 card">
-        <picture>
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/svgs/service2.svg"
-            alt="appliance"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h2>Service 2</h2>
-        <p>
-          Talk about the service with keywords people will be searching for it
-          by. Keep it 1-2 sentences.
-        </p>
-      </div>
-      <div class="bg-stone-200 card">
-        <picture>
-          <img
-            aria-hidden="true"
-            decoding="async"
-            src="/assets/svgs/service3.svg"
-            alt="appliance"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h2>Service 3</h2>
-        <p>
-          Talk about the service with keywords people will be searching for it
-          by. Keep it 1-2 sentences.
-        </p>
-      </div>
-    </section>
-
-    <FAQ />
-
-    <section id="reviews">
-      <div class="flex flex-col gap-3">
-        <h2 id="Words From Our Customers">Words From Our Customers</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit dolor
-          volutpat porttitor sagittis nunc nisl. Sagittis sit pellentesque
-          gravida viverra. Leo ut sed euismod tortor risus et. Ornare non neque,
-          leo, ornare. Lorem ipsum dolor sit amet.
-        </p>
-        <div class="reviews">
-          <div class="review">
-            <picture>
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/profile.svg"
-                alt=""
-                width="99"
-                height="99"
-              />
-            </picture>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-              recusandae rerum unde similique ratione sapiente necessitatibus
-              natus mollitia nam iusto.
-            </p>
-            <div class="star-group">
-              <p>B Miller</p>
-              <p>Homeowner</p>
-              <picture>
-                <img
-                  aria-hidden="true"
-                  loading="lazy"
-                  decoding="async"
-                  src="/assets/svgs/stars.svg"
-                  alt="stars"
-                  width="91"
-                  height="15"
-                />
-              </picture>
-            </div>
+  <section id="contact" class="mt-20 mb-36 w-full">
+    <div
+      class="flex flex-col justify-center items-center mx-auto my-20 lg:my-12 w-full text-center align-middle"
+    >
+      <div
+        class="flex max-lg:flex-col justify-center items-center gap-x-20 gap-y-16 text-center align-middle"
+      >
+        <div
+          class="flex max-sm:flex-col justify-center items-start gap-x-20 gap-y-16 mx-auto text-center align-middle"
+        >
+          <div class="flex flex-col gap-1 mx-auto text-center">
+            <h2 class="font-light text-black text-xl">Phone</h2>
+            <a
+              title={details[0].data.phone}
+              href={`tel:${details[0].data.phone.replace(/\((\d{3})\)\s(\d{3})-(\d{4})/, "$1-$2-$3")}`}
+            >
+              {details[0].data.phone}
+            </a>
           </div>
-          <div class="review">
-            <picture>
-              <img
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/profile.svg"
-                alt=""
-                width="99"
-                height="99"
-              />
-            </picture>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-              recusandae rerum unde similique ratione sapiente necessitatibus
-              natus mollitia nam iusto.
-            </p>
-            <div class="star-group">
-              <p>Vincent M.</p>
-              <p>Homeowner</p>
-              <picture>
-                <img
-                  aria-hidden="true"
-                  loading="lazy"
-                  decoding="async"
-                  src="/assets/svgs/stars.svg"
-                  alt="stars"
-                  width="91"
-                  height="15"
-                />
-              </picture>
-            </div>
+          <div class="flex flex-col gap-1 mx-auto text-center">
+            <h2 class="font-light text-black text-xl">Email</h2>
+            <a
+              title={details[0].data.email}
+              href={`mailto:${details[0].data.email.toLowerCase()}`}
+            >
+              {details[0].data.email}
+            </a>
           </div>
         </div>
-        <a
-          aria-label="Read more reviews"
-          href="/reviews"
-          class="button"
-        >
-          Our Reviews
-        </a>
       </div>
-    </section>
-
-    <CTA />
+    </div>
   </section>
 </BaseLayout>

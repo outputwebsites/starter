@@ -1,72 +1,51 @@
 ---
-import client from "@data/client.json";
-import navData from "@data/navData.json";
+import { getCollection } from "astro:content";
 import { getCurrentYear } from "@js/utils";
 
+const details = await getCollection("details");
 const currentYear = getCurrentYear();
 ---
 
-<footer id="footer">
-  <div id="footer-container" class="bg-stone-200 py-10 px-3 flex flex-wrap">
-    <div id="left-section">
-      <a href="/">
+<footer
+  id="footer"
+  class="bg-gray-100 pt-16 pb-2 flex flex-col justify-center items-center"
+>
+  <section
+    id="footer-container"
+    class="flex flex-col lg:flex-row justify-center item-start max-md:items-middle lg:items-start align-top w-full gap-0 mx-auto max-w-screen-lg"
+  >
+    <section
+      id="footer-logo"
+      class="flex flex-col text-center justify-center align-middle items-center sm:min-w-[350px] px-3"
+    >
+      <a title={details[0].data.name} href="/">
         <img
-          loading="lazy"
+          src="/assets/svgs/logotype_black.svg"
+          alt={details[0].data.name}
+          width="350"
+          height="350"
           decoding="async"
-          src="/assets/svgs/logo-white.svg"
-          alt="logo"
-          width="264"
-          height="78"
+          loading="lazy"
+          class="bg-transparent"
         />
       </a>
-      <p>
-        Extra content if you need it, if not you can delete this whole p tag. I
-        usually do.
-      </p>
-    </div>
-    <div id="right-section">
-      <div class="flex flex-wrap">
-        <ul>
-          <li>
-            <h2>Information</h2>
-          </li>
-          {
-            navData.map((entry) => (
-              <li>
-                <a href={entry.url}>{entry.key}</a>
-              </li>
-            ))
-          }
-        </ul>
-        <ul>
-          <li>
-            <h2>Services</h2>
-          </li>
-          <li>Service1</li>
-          <li>Service2</li>
-          <li>Service4</li>
-          <li>Service5</li>
-        </ul>
-        <ul>
-          <li>
-            <h2>Contact</h2>
-          </li>
-          <li>
-            <a href={`tel:${client.phoneForTel}`}>
-              T:
-              {client.phoneFormatted}
-            </a>
-          </li>
-          <li>
-            <a href={`mailto:${client.email}`}>{client.email}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    </section>
+  </section>
 
-  <div id="footer-credits" class="flex flex-col text-center py-10 px-3">
-    <p>Designed and Hand Coded by <a href="https://derek-perry.com" target="_blank" rel="noopener">Derek Perry</a></p>
-    <p id="copyright">Copyright {currentYear} - Present</p>
-  </div>
+  <section
+    id="footer-credits"
+    class="flex flex-col text-center mt-16 py-8 px-3"
+  >
+    <p class="text-xs text-gray-400">
+      Output Websites LLC is owned and operated by <a
+        href="https://derek-perry.com"
+        target="_blank"
+        rel="noopener"
+        class="text-gray-400 text-xs">Derek Perry</a
+      >
+    </p>
+    <p id="copyright" class="text-xs text-gray-400">
+      Copyright 2024 - {currentYear}
+    </p>
+  </section>
 </footer>

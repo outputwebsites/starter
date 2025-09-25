@@ -8,34 +8,28 @@ editor:
   preview: false
 media_folder: src/assets/images/media # Location where files will be stored in the repo - we store them in src so that Astro can optimize them.
 public_folder: src/assets/images/media # Ensure that this path is the same as the media_folder path above.
-logo_url: https://derek-perry.com/media/logo.png # change url to a link to the image you want to use, no file paths, must be a URL
+logo_url: https://outputstarter.netlify.app/assets/svgs/logotype_black.svg # change url to a link to the image you want to use, no file paths, must be a URL
+display_url: https://outputstarter.netlify.app
 collections:
 # Define the collections that will be available in the CMS. Collections Docs = https://decapcms.org/docs/collection-folder  |  Widgets Docs = https://decapcms.org/docs/widgets
-- name: "blog" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
-  label: "Blog Posts" # Used in the admin dashboard UI
-  label_singular: 'Blog Post' # Used in the admin dashboard UI
-  description: "Blog posts show up on the blog page and help SEO." # Used in the admin dashboard UI
-  identifier_field: title # The field that will be used to identify the document in the CMS
-  folder: "src/content/blog" # The path to the folder where the documents are stored
-  create: true # Allow users to create new documents in this collection
-  fields:
-  # The fields for each document
-  - { label: "Title", name: "title", widget: "string", hint: "Keep titles brief yet descriptive." }
-  - { label: "Author", name: 'author', widget: relation, required: false, collection: author, multiple: true, search_fields: [ "name" ], display_fields: [ "name" ], value_field: "{{slug}}", hint: "Select the author(s) of the blog post." }
-  - { label: "Body", name: "body", widget: "markdown", hint: "Write your blog post content in the box above." }
-  - { label: "Featured Image", name: "image", widget: "image", hint: "Add a photo to display at the top of the post." }
-  - { label: "Featured Image Caption", name: "imageAlt", widget: "string", required: false, hint: "Add a caption to describe the featured image." }
-  - { label: "Publish Date", name: "date", widget: "datetime", default: '{{now}}', hint: "Choose the date and time the post was published or written." }
-  - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add comma-separated tags to help categorize your post. (Don't press space!)" }
-- name: "author" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
-  label: "Authors" # Used in the admin dashboard UI
-  label_singular: 'Author' # Used in the admin dashboard UI
-  description: "Authors are used to properly attribute blog posts." # Used in the admin dashboard UI
-  identifier_field: name # The field that will be used to identify the document in the CMS
-  folder: "src/content/author" # The path to the folder where the documents are stored
-  create: true # Allow users to create new documents in this collection
-  fields:
-  # The fields for each document
-  - { label: "Name", name: "name", widget: "string", hint: "Enter your full name." }
-  - { label: "Short Bio", name: "bio", widget: "string", required: false, hint: "Add a short biography to display under your author credits." }
-  - { label: "Portrait Image", name: "photo", widget: "image", required: false, hint: "Add a square portrait image featuring a color head shot." }
+- label: "Business Details" # Used in the admin dashboard UI
+  name: "details" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
+  files:
+  - label: "Business Details" # Used in the admin dashboard UI
+    name: "details" # Used in routes, e.g., /admin/collections/blog. Is also the key when fetching data from the CMS.
+    file: "src/content/details/details.yml" # The path to the folder where the documents are stored
+    fields:
+    - { label: "Name", name: "name", widget: "string", hint: "Full name of the business." }
+    - { label: "Email", name: "email", widget: "string", hint: "Email of the business." }
+    - { label: "Phone Number", name: "phone", widget: "string", hint: "Main/office telephone number of the business. Use (000) 000-0000 format." }
+    - { label: "Description", name: "description", widget: "text", hint: "Short description of the business. (Max 1-2 sentences (140 character max)." }
+    - { label: "Domain", name: "domain", widget: "string", hint: "Domain name (website link/URL) of the business." }
+    - label: "Keywords"
+      name: "keywords"
+      label_singular: "Keyword"
+      widget: "list"
+      add_to_top: true
+      collapsed: true
+      minimize_collapsed: true
+      summary: "{{fields.keyword}}"
+      field: { label: Keyword, name: keyword, widget: string, hint: "Keyword that describes any aspect of the business which someone may use to search for the business." }

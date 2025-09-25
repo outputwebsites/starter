@@ -1,7 +1,6 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import client from "@data/client.json";
-import Header from "@components/Header.astro";
+import { getCollection } from "astro:content";
+import { ClientRouter } from "astro:transitions";
 import Footer from "@components/Footer.astro";
 import "@fontsource-variable/outfit";
 import outfitWoff2 from "@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url";
@@ -9,12 +8,13 @@ import outfitWoff2 from "@fontsource-variable/outfit/files/outfit-latin-wght-nor
 import "@styles/globals.css";
 
 const { description, title } = Astro.props;
+const details = await getCollection("details");
 ---
 
 <html lang="en">
   <head>
     <!-- View Transitions support -->
-    <ViewTransitions />
+    <ClientRouter />
 
     <!-- Preloads font -->
     <link
@@ -31,16 +31,24 @@ const { description, title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta name="keywords" content="" />
+
+    <!-- SEO meta tags -->
+    <meta
+      name="keywords"
+      content={details[0].data.keywords && details[0].data.keywords.length > 0
+        ? details[0].data.keywords.join(", ")
+        : ""}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link
       rel="canonical"
-      href={`https://${client.domain}${Astro.url.pathname}`}
+      href={`https://${details[0].data.domain.toLowerCase()}${Astro.url.pathname}`}
     />
     <title>
       {
         Astro.url.pathname === "/"
-          ? `${client.name}`
-          : `${title} | ${client.name}`
+          ? `${details[0].data.name}`
+          : `${title} | ${details[0].data.name}`
       }
     </title>
     <meta property="og:title" content={title} />
@@ -53,97 +61,60 @@ const { description, title } = Astro.props;
     <meta name="twitter:description" content={description} />
     <meta
       property="og:url"
-      content={`https://${client.domain}${Astro.url.pathname}`}
+      content={`https://${details[0].data.domain.toLowerCase()}${Astro.url.pathname}`}
     />
-    <meta property="og:image" content="/assets/images/banner.png" />
+    <meta property="og:image" content="/assets/favicons/banner.png" />
     <meta
       property="og:image:secure_url"
-      content="/assets/images/banner.png"
+      content="/assets/favicons/banner.png"
     />
     <meta property="og:image:width" content="1920" />
     <meta property="og:image:height" content="1080" />
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/assets/images/banner.png" />
+    <meta name="twitter:image" content="/assets/favicons/banner.png" />
     <meta name="twitter:image:width" content="1920" />
     <meta name="twitter:image:height" content="1080" />
     <meta name="twitter:image:alt" content={title} />
 
     <!-- Favicons -->
     <link
+      rel="icon"
+      type="image/png"
+      href="/assets/favicons/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico" />
+    <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="/assets/favicons/apple-touch-icon.png"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/favicons/favicon-32x32.png?v1"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/assets/favicons/favicon-16x16.png"
-    />
-    <link rel="icon" href="/assets/favicons/favicon.ico" />
-    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#A3E635" />
-    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#A3E635" />
-    <meta name="msapplication-TileImage" content="/assets/favicons/mstile-144x144.png"} />
+    <meta name="apple-mobile-web-app-title" content={details[0].data.name} />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- Site-wide Scripts -->
-    <script src="@js/nav.js"></script>
+    <!-- Umami Analytics -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="c38fd10e-c2fc-47cd-afc7-90aae40611f8"></script>
   </head>
-  <body>
+  <body
+    class="flex flex-col min-h-screen align-middle justify-between font-sans"
+  >
     <!-- Screen reader skip main nav -->
     <a class="skip" aria-label="skip to main content" href="#main"
       >Click To Skip To Main Content</a
     >
-
-    <Header />
-    <main id="main">
+    <main
+      id="main"
+      role="main"
+      class="flex flex-col flex-1 grow align-middle justify-center"
+    >
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<script is:inline>
-  // helper functions to toggle dark mode
-  function enableDarkMode() {
-    document.body.classList.add("dark-mode");
-    localStorage.setItem("theme", "dark");
-  }
-
-  function disableDarkMode() {
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("theme", "light");
-  }
-
-  function setTheme() {
-    // default to the light theme
-    let theme = "light";
-
-    // check localStorage for a saved "theme" variable. if it is there, the user has visited before, so apply the necessary theme choices
-    if (localStorage.getItem("theme")) {
-      theme = localStorage.getItem("theme");
-    }
-    // if it"s not there, check to see if the user has applied dark mode preferences themselves in the browser
-    else if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      theme = "dark";
-    }
-
-    // if there is no preference set, the default of light will be used. apply accordingly
-    theme === "dark" ? enableDarkMode() : disableDarkMode();
-  }
-
-  setTheme();
-
-  document.addEventListener("astro:after-swap", setTheme); // For View Transitions purposes - astro:after-swap ensures that the theme is kept after navigating to a new page.
-</script>

@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Allow: /
-
-Sitemap: https://outputstarter.netlify.app/sitemap-index.xml

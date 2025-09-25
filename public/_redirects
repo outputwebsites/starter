@@ -1,4 +1,6 @@
 # Redirects from what the browser requests to what we serve
 /home                /
 /homepage            /
+/about               /
+/contact             /
 /sitemap.xml         /sitemap-index.xml

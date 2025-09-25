@@ -21,7 +21,8 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: rgb(229, 231, 235);
+    /* gray-200 */
   }
 }
 
@@ -40,21 +41,23 @@
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
-  drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
   font-family: "Outfit Variable", sans-serif;
   cursor: pointer;
 
   &:hover {
     color: white;
     background-color: rgb(168, 162, 158);
+    /* stone-400 */
     text-decoration: none;
     text-decoration-line: none;
   }
 
   &:focus {
     color: rgb(38, 38, 38);
+    /* stone-800 */
     background-color: rgb(231, 229, 228);
+    /* stone-200 */
     text-decoration: none;
     text-decoration-line: none;
   }
@@ -74,23 +77,73 @@
     font-family: "Outfit Variable", system-ui, sans-serif;
     letter-spacing: 0.2px;
     scroll-behavior: smooth;
-    background-color: var(--color-white)
-      /* #fff = #ffffff */
-    ;
-    color: var(--color-black)
-      /* #000 = #000000 */
-    ;
+    background-color: white;
+    color: black;
   }
 
   /* Change selection background */
   ::selection {
-    background-color: var(--color-sky-600)
-      /* oklch(58.8% 0.158 241.966) */
-    ;
-    color: var(--color-white)
-      /* #fff = #ffffff */
-    ;
+    background-color: rgb(2, 132, 199);
+    /* sky-600 */
+    color: white;
     text-shadow: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-inline: 0;
+  }
+
+  h1 {
+    /* Font size = 4xl */
+    font-size: 2.25rem;
+    /* 2.25rem (36px) */
+    line-height: calc(2.5 / 2.25);
+    /* calc(2.5 / 2.25) */
+  }
+
+  h2 {
+    /* Font size = 3xl */
+    font-size: 1.875rem;
+    /* 1.875rem (30px) */
+    line-height: calc(2.25 / 1.875);
+    /* calc(2.25 / 1.875) */
+  }
+
+  h3 {
+    /* Font size = 2xl */
+    font-size: 1.5rem;
+    /* 1.5rem (24px) */
+    line-height: calc(2 / 1.5);
+    /* calc(2 / 1.5) */
+  }
+
+  h4 {
+    /* Font size = xl */
+    font-size: 1.25rem;
+    /* 1.25rem (20px) */
+    line-height: calc(1.75 / 1.25);
+    /* calc(1.75 / 1.25) */
+  }
+
+  h5 {
+    /* Font size = lg */
+    font-size: 1.125rem;
+    /* 1.125rem (18px) */
+    line-height: calc(1.75 / 1.125);
+    /* calc(1.75 / 1.125) */
+  }
+
+  h6 {
+    /* Font size = lg */
+    font-size: 1.125rem;
+    /* 1.125rem (18px) */
+    line-height: calc(1.75 / 1.125);
+    /* calc(1.75 / 1.125) */
   }
 
   /* Increase paragraph tag size default to tailwind-xl */
@@ -101,11 +154,84 @@
     /* 28px - 7 */
   }
 
+  /* Link Tags */
+  a {
+    color: rgb(132, 204, 22);
+    /* lime-500 */
+    font-size: 1.25rem;
+    /* 20px - xl */
+    line-height: 1.75rem;
+    /* 28px - 7 */
+    text-decoration: underline;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+  }
+
+  a:hover {
+    color: rgb(163, 230, 53);
+    /* lime-400 */
+    text-decoration: none;
+  }
+
+  a:focus {
+    color: rgb(101, 163, 13);
+    /* lime-600 */
+    text-decoration: underline;
+  }
+
+  a:active {
+    color: rgb(101, 163, 13);
+    /* lime-600 */
+    text-decoration: underline;
+  }
+
+  /* Button */
+  .button {
+    cursor: pointer;
+    border-radius: 0.375rem;
+    border-width: 1px;
+    border-color: rgb(101, 163, 13);
+    /* lime-600 */
+    background-color: rgb(243, 244, 246);
+    /* gray-100 */
+    padding: 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: rgb(132, 204, 22);
+    /* lime-500 */
+    text-decoration-line: none;
+    box-shadow: 0 0 0 0px #fff, 0 0 0 calc(3px + 0px) rgb(59, 130, 246, 0.5), 0 0 #0000;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  .button:hover {
+    color: rgb(163, 230, 53);
+    /* lime-400 */
+    text-decoration: none;
+  }
+
+  .button:focus {
+    color: rgb(101, 163, 13);
+    /* lime-600 */
+    text-decoration: underline;
+  }
+
+  .button:active {
+    color: rgb(101, 163, 13);
+    /* lime-600 */
+    text-decoration: underline;
+  }
+
   /* Images */
   img {
-    font-size: var(--text-sm);
+    font-size: 0.875rem;
     /* 0.875rem (14px) */
-    line-height: var(--text-sm--line-height);
+    line-height: calc(1.25 / 0.875);
     /* calc(1.25 / 0.875) */
     display: flex;
     justify-content: center;
@@ -115,69 +241,9 @@
     text-align: center;
     max-width: 100%;
     height: auto;
-    color: color-mix(in oklab, var(--color-gray-400)
-        /* oklch(70.7% 0.022 261.325) = #99a1af */
-        20%, transparent);
-    background-color: color-mix(in oklab, var(--color-black)
-        /* #000 = #000000 */
-        10%, transparent);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-inline: calc(var(--spacing) * 0);
-  }
-
-  h1 {
-    /* Font size = 4xl */
-    font-size: var(--text-4xl);
-    /* 2.25rem (36px) */
-    line-height: var(--text-4xl--line-height);
-    /* calc(2.5 / 2.25) */
-  }
-
-  h2 {
-    /* Font size = 3xl */
-    font-size: var(--text-3xl);
-    /* 1.875rem (30px) */
-    line-height: var(--text-3xl--line-height);
-    /* calc(2.25 / 1.875) */
-  }
-
-  h3 {
-    /* Font size = 2xl */
-    font-size: var(--text-2xl);
-    /* 1.5rem (24px) */
-    line-height: var(--text-2xl--line-height);
-    /* calc(2 / 1.5) */
-  }
-
-  h4 {
-    /* Font size = xl */
-    font-size: var(--text-xl);
-    /* 1.25rem (20px) */
-    line-height: var(--text-xl--line-height);
-    /* calc(1.75 / 1.25) */
-  }
-
-  h5 {
-    /* Font size = lg */
-    font-size: var(--text-lg);
-    /* 1.125rem (18px) */
-    line-height: var(--text-lg--line-height);
-    /* calc(1.75 / 1.125) */
-  }
-
-  h6 {
-    /* Font size = lg */
-    font-size: var(--text-lg);
-    /* 1.125rem (18px) */
-    line-height: var(--text-lg--line-height);
-    /* calc(1.75 / 1.125) */
+    color: rgb(153, 161, 175);
+    /* gray-400 */
+    background-color: black;
   }
 
   /* Lists */
@@ -254,41 +320,41 @@
 @media (width >=48rem) {
   h1 {
     /* Font size = 5xl */
-    font-size: var(--text-5xl);
+    font-size: 3rem;
     /* 3rem (48px) */
-    line-height: var(--text-5xl--line-height);
+    line-height: 1;
     /* 1 */
   }
 
   h2 {
     /* Font size = 4xl */
-    font-size: var(--text-4xl);
+    font-size: 2.25rem;
     /* 2.25rem (36px) */
-    line-height: var(--text-4xl--line-height);
+    line-height: calc(2.5 / 2.25);
     /* calc(2.5 / 2.25) */
   }
 
   h3 {
     /* Font size = 3xl */
-    font-size: var(--text-3xl);
+    font-size: 1.875rem;
     /* 1.875rem (30px) */
-    line-height: var(--text-3xl--line-height);
+    line-height: calc(2.25 / 1.875);
     /* calc(2.25 / 1.875) */
   }
 
   h4 {
     /* Font size = 2xl */
-    font-size: var(--text-2xl);
+    font-size: 1.5rem;
     /* 1.5rem (24px) */
-    line-height: var(--text-2xl--line-height);
+    line-height: calc(2 / 1.5);
     /* calc(2 / 1.5) */
   }
 
   h5 {
     /* Font size = xl */
-    font-size: var(--text-xl);
+    font-size: 1.25rem;
     /* 1.25rem (20px) */
-    line-height: var(--text-xl--line-height);
+    line-height: calc(1.75 / 1.25);
     /* calc(1.75 / 1.25) */
   }
 }
