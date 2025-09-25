@@ -156,8 +156,8 @@
 
   /* Link Tags */
   a {
-    color: rgb(132, 204, 22);
-    /* lime-500 */
+    color: rgb(101, 163, 13);
+    /* lime-600 */
     font-size: 1.25rem;
     /* 20px - xl */
     line-height: 1.75rem;
@@ -175,14 +175,14 @@
   }
 
   a:focus {
-    color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(132, 204, 22);
+    /* lime-500 */
     text-decoration: underline;
   }
 
   a:active {
-    color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(132, 204, 22);
+    /* lime-500 */
     text-decoration: underline;
   }
 
@@ -216,14 +216,14 @@
   }
 
   .button:focus {
-    color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(132, 204, 22);
+    /* lime-500 */
     text-decoration: underline;
   }
 
   .button:active {
-    color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(132, 204, 22);
+    /* lime-500 */
     text-decoration: underline;
   }
 
