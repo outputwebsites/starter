@@ -1,8 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
-
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://outputstarter.netlify.app",
@@ -13,8 +12,8 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
     }),
-    tailwind({
-      applyBaseStyles: false,
-    })
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

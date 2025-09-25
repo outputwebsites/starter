@@ -1,8 +1,127 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    Outfit Variable, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility button {
+  background-color: #7f1d1d;
+  border-radius: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  color: white;
+  text-decoration: none;
+  text-decoration-line: none;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+  drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  font-family: "Outfit Variable", sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: rgb(168, 162, 158);
+    text-decoration: none;
+    text-decoration-line: none;
+  }
+
+  &:focus {
+    color: rgb(38, 38, 38);
+    background-color: rgb(231, 229, 228);
+    text-decoration: none;
+    text-decoration-line: none;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
 
 @layer base {
+
+  /* For the base HTML and body tags: set padding/margin, font, etc */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: "Outfit Variable", system-ui, sans-serif;
+    letter-spacing: 0.2px;
+    scroll-behavior: smooth;
+    background-color: var(--color-white)
+      /* #fff = #ffffff */
+    ;
+    color: var(--color-black)
+      /* #000 = #000000 */
+    ;
+  }
+
+  /* Change selection background */
+  ::selection {
+    background-color: var(--color-sky-600)
+      /* oklch(58.8% 0.158 241.966) */
+    ;
+    color: var(--color-white)
+      /* #fff = #ffffff */
+    ;
+    text-shadow: none;
+  }
+
+  /* Increase paragraph tag size default to tailwind-xl */
+  p {
+    font-size: 1.25rem;
+    /* 20px - xl */
+    line-height: 1.75rem;
+    /* 28px - 7 */
+  }
+
+  /* Images */
+  img {
+    font-size: var(--text-sm);
+    /* 0.875rem (14px) */
+    line-height: var(--text-sm--line-height);
+    /* calc(1.25 / 0.875) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+    color: color-mix(in oklab, var(--color-gray-400)
+        /* oklch(70.7% 0.022 261.325) = #99a1af */
+        20%, transparent);
+    background-color: color-mix(in oklab, var(--color-black)
+        /* #000 = #000000 */
+        10%, transparent);
+  }
 
   h1,
   h2,
@@ -10,186 +129,171 @@
   h4,
   h5,
   h6 {
-    @apply mx-0;
+    margin-inline: calc(var(--spacing) * 0);
   }
 
   h1 {
-    @apply text-4xl sm:text-5xl;
+    /* Font size = 4xl */
+    font-size: var(--text-4xl);
+    /* 2.25rem (36px) */
+    line-height: var(--text-4xl--line-height);
+    /* calc(2.5 / 2.25) */
   }
 
   h2 {
-    @apply text-3xl sm:text-4xl;
+    /* Font size = 3xl */
+    font-size: var(--text-3xl);
+    /* 1.875rem (30px) */
+    line-height: var(--text-3xl--line-height);
+    /* calc(2.25 / 1.875) */
   }
 
   h3 {
-    @apply text-2xl sm:text-3xl;
+    /* Font size = 2xl */
+    font-size: var(--text-2xl);
+    /* 1.5rem (24px) */
+    line-height: var(--text-2xl--line-height);
+    /* calc(2 / 1.5) */
   }
 
   h4 {
-    @apply text-xl sm:text-2xl;
+    /* Font size = xl */
+    font-size: var(--text-xl);
+    /* 1.25rem (20px) */
+    line-height: var(--text-xl--line-height);
+    /* calc(1.75 / 1.25) */
   }
 
   h5 {
-    @apply text-lg sm:text-xl;
+    /* Font size = lg */
+    font-size: var(--text-lg);
+    /* 1.125rem (18px) */
+    line-height: var(--text-lg--line-height);
+    /* calc(1.75 / 1.125) */
   }
 
   h6 {
-    @apply text-lg;
+    /* Font size = lg */
+    font-size: var(--text-lg);
+    /* 1.125rem (18px) */
+    line-height: var(--text-lg--line-height);
+    /* calc(1.75 / 1.125) */
+  }
+
+  /* Lists */
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+    counter-reset: item;
+  }
+
+  ul ul,
+  ol ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 1rem;
+    /* 16px */
+  }
+
+  ol ol,
+  ul ol {
+    list-style-type: lower-latin;
+    list-style-position: inside;
+    margin-left: 1rem;
+    /* 16px */
+  }
+
+  li>p,
+  li>h1,
+  li>h2,
+  li>h3,
+  li>h4,
+  li>h5,
+  li>h6 {
+    display: inline-block;
+  }
+
+  ol>li {
+    counter-increment: item;
+  }
+
+  ol ol>li {
+    display: block;
+  }
+
+  ol ol>li:before {
+    content: counters(item, ".") " ";
+  }
+
+  /* Abbreviations */
+  abbr {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+
+  abbr:hover {
+    text-decoration: underline;
+  }
+
+  dfn>abbr[title]::after {
+    content: " (" attr(title) ")";
   }
 }
 
-/* For the base HTML and body tags: set padding/margin, font, etc */
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Outfit Variable", sans-serif;
-  letter-spacing: 0.2px;
-  scroll-behavior: smooth;
+/* Responsive Breakpoint - SM */
+@media (width >=48rem) {
+  h1 {
+    /* Font size = 5xl */
+    font-size: var(--text-5xl);
+    /* 3rem (48px) */
+    line-height: var(--text-5xl--line-height);
+    /* 1 */
+  }
+
+  h2 {
+    /* Font size = 4xl */
+    font-size: var(--text-4xl);
+    /* 2.25rem (36px) */
+    line-height: var(--text-4xl--line-height);
+    /* calc(2.5 / 2.25) */
+  }
+
+  h3 {
+    /* Font size = 3xl */
+    font-size: var(--text-3xl);
+    /* 1.875rem (30px) */
+    line-height: var(--text-3xl--line-height);
+    /* calc(2.25 / 1.875) */
+  }
+
+  h4 {
+    /* Font size = 2xl */
+    font-size: var(--text-2xl);
+    /* 1.5rem (24px) */
+    line-height: var(--text-2xl--line-height);
+    /* calc(2 / 1.5) */
+  }
+
+  h5 {
+    /* Font size = xl */
+    font-size: var(--text-xl);
+    /* 1.25rem (20px) */
+    line-height: var(--text-xl--line-height);
+    /* calc(1.75 / 1.25) */
+  }
 }
 
-/* Adjust scroll-padding-top to give padding before the #linked content */
-html {
-  scroll-padding-top: 2.5rem;
-  /* 40px */
-}
-
-/* Change selection background */
-::selection {
-  @apply bg-outputGreenMain text-outputWhite;
-  text-shadow: none;
-}
-
-/* Increase paragraph tag size default to tailwind-xl */
-p {
-  font-size: 1.25rem;
-  /* 20px - xl */
-  line-height: 1.75rem;
-  /* 28px - xl */
-}
-
-/* Link Tags */
-a {
-  @apply text-outputGreenDark;
-  text-decoration: underline;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 100ms;
-}
-
-a:hover {
-  @apply text-outputGreenMain;
-  text-decoration: none;
-}
-
-a:focus {
-  @apply text-outputGreenDarker;
-  text-decoration: underline;
-}
-
-a:active {
-  @apply text-outputGreenDarker;
-  text-decoration: underline;
-}
-
-/* Button - Standard Green */
-.button-gradient {
-  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDark;
-  text-decoration: none;
-  font-weight: bold;
-  line-height: 2.5rem;
-  /* 40px */
-  border-radius: 0.5rem;
-  /* 8px */
-  padding: 1rem 2rem 1rem 2rem;
-  /* 1rem=16px, 2rem=32px */
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 100ms;
-}
-
-.button-gradient:hover {
-  @apply text-outputBlack bg-gradient-to-bl from-outputGreenLight to-outputGreenMain;
-  text-decoration: none;
-}
-
-.button-gradient:focus {
-  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDarker;
-  text-decoration: none;
-}
-
-.button-gradient:active {
-  @apply text-outputBlack bg-gradient-to-bl from-outputGreenMain to-outputGreenDarker;
-  text-decoration: none;
-}
-
-/* HR/Dividing Lines */
-hr {
-  margin-top: 0.5rem;
-  /* 8px */
-  margin-bottom: 0.5rem;
-  /* 8px */
-}
-
-/* Lists */
-li {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-ol {
-  list-style-type: decimal;
-  list-style-position: inside;
-  counter-reset: item;
-}
-
-ul ul,
-ol ul {
-  list-style-type: circle;
-  list-style-position: inside;
-  margin-left: 1rem;
-  /* 16px */
-}
-
-ol ol,
-ul ol {
-  list-style-type: lower-latin;
-  list-style-position: inside;
-  margin-left: 1rem;
-  /* 16px */
-}
-
-li>p,
-li>h1,
-li>h2,
-li>h3,
-li>h4,
-li>h5,
-li>h6 {
-  display: inline-block;
-}
-
-ol>li {
-  counter-increment: item;
-}
-
-ol ol>li {
-  display: block;
-}
-
-ol ol>li:before {
-  content: counters(item, ".") " ";
-}
-
-dfn>abbr[title]::after {
-  content: " (" attr(title) ")";
-}
-
+/* Skip Link */
 @media only screen and (min-width: 0em) {
   .skip {
     opacity: 0;

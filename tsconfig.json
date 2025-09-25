@@ -14,5 +14,7 @@
     },
     "incremental": true,
 		"skipLibCheck": true
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "src/**/*.astro"],
+  "exclude": ["node_modules", ".astro", "dist"]
 }

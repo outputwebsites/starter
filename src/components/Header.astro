@@ -6,7 +6,7 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
 ---
 
 <header id="site-header">
-  <div class="flex gap-10 justify-center text-center items-center">
+  <div class="flex justify-center items-center gap-10 text-center">
     <!--Nav Logo-->
     <a href="/" aria-label="back to home" class="max-md:hidden">
       <img
@@ -86,7 +86,7 @@ import DarkModeToggle from "@components/DarkModeToggle.astro";
         </ul>
       </div>
     </nav>
-    <a href="/contact" class="button-gradient max-sm:hidden">Contact Us</a>
+    <a href="/contact" class="max-sm:hidden button">Contact Us</a>
     <!--Dark Mode toggle: remove component if you don't want to enable a dark mode toggle-->
     <DarkModeToggle />
   </div>
