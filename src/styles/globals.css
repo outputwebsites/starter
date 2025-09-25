@@ -156,8 +156,8 @@
 
   /* Link Tags */
   a {
-    color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(63,98,18);
+    /* lime-800 */
     font-size: 1.25rem;
     /* 20px - xl */
     line-height: 1.75rem;
@@ -169,20 +169,20 @@
   }
 
   a:hover {
-    color: rgb(163, 230, 53);
-    /* lime-400 */
+    color: rgb(26,46,5);
+    /* lime-950 */
     text-decoration: none;
   }
 
   a:focus {
-    color: rgb(132, 204, 22);
-    /* lime-500 */
+    color: rgb(54,83,20);
+    /* lime-900 */
     text-decoration: underline;
   }
 
   a:active {
-    color: rgb(132, 204, 22);
-    /* lime-500 */
+    color: rgb(54,83,20);
+    /* lime-900 */
     text-decoration: underline;
   }
 
@@ -191,15 +191,13 @@
     cursor: pointer;
     border-radius: 0.375rem;
     border-width: 1px;
-    border-color: rgb(101, 163, 13);
-    /* lime-600 */
+    color: rgb(63,98,18);
+    /* lime-800 */
     background-color: rgb(243, 244, 246);
     /* gray-100 */
     padding: 0.5rem;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    color: rgb(132, 204, 22);
-    /* lime-500 */
     text-decoration-line: none;
     box-shadow: 0 0 0 0px #fff, 0 0 0 calc(3px + 0px) rgb(59, 130, 246, 0.5), 0 0 #0000;
     transition-property: all;
@@ -210,20 +208,20 @@
   }
 
   .button:hover {
-    color: rgb(163, 230, 53);
-    /* lime-400 */
+    color: rgb(26,46,5);
+    /* lime-950 */
     text-decoration: none;
   }
 
   .button:focus {
-    color: rgb(132, 204, 22);
-    /* lime-500 */
+    color: rgb(54,83,20);
+    /* lime-900 */
     text-decoration: underline;
   }
 
   .button:active {
-    color: rgb(132, 204, 22);
-    /* lime-500 */
+    color: rgb(54,83,20);
+    /* lime-900 */
     text-decoration: underline;
   }
 
